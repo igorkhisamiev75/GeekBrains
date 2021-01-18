@@ -1,5 +1,5 @@
 ﻿using System;
-//using System.Data;
+
 
 namespace lesson1
 {
@@ -9,7 +9,8 @@ namespace lesson1
         {
             Console.WriteLine("Как тебя зовут?");
             string name = Console.ReadLine();
-            Console.WriteLine($"Привет, {name}, сегодня {DateTime.Now}");
+
+            Console.WriteLine($"Привет, {name}, сегодня {DateTime.Now}"); //вывод данных
             Console.ReadKey();
         }
     }
