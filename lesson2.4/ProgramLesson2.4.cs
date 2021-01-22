@@ -22,13 +22,11 @@ namespace lesson2._4
             DateTime date = DateTime.Now;
 
            
-
-            //Console.SetWindowSize(Console.WindowHeight, 60);
-            //Console.SetWindowSize(Console.WindowWidth, 50);
-
             Console.WriteLine("    \n" +
                 $"     {nameShop}     \n \n" +
 
+                    $" {date}\n \n" +
+                    $" {wight1}кг....." + $" { price1} руб.\n" +
                     $" {position1}........."+$" {wight1}кг....." + $" { price1} руб.\n" +
 
                     $" {position2}........." + $" {wight2}л........" + $" { price2} руб.\n\n\n\n" +
