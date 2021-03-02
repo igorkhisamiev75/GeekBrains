@@ -4,7 +4,8 @@ using System.Collections.Generic;
 namespace asdLesson2._1
 /*
                      1. Двусвязный список
-        Требуется реализовать класс двусвязного списка операции вставки, удаления и поиска элемента в нём в соответствии с интерфейсом.
+        Требуется реализовать класс двусвязного списка операции вставки, 
+удаления и поиска элемента в нём в соответствии с интерфейсом.
         namespace GeekBrainsTests
         {
             public class Node
@@ -12,7 +13,9 @@ namespace asdLesson2._1
                   public int Value { get; set; }
                   public Node NextNode { get; set; }
                   public Node PrevNode { get; set; }
+
             }//Начальную и конечную ноду нужно хранить в самой реализации интерфейса
+
             public interface ILinkedList
             {
                   int GetCount(); // возвращает количество элементов в списке
