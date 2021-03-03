@@ -39,16 +39,22 @@ namespace asdLesson2._1
 
         static void Main(string[] args)
         {
-            /*var first = new Node { Value = 1 }; //создание элемента - уже что-то))
-            var second = new Node { Value = 2 };
+           LinkedClass linkedList = new LinkedClass();
 
-            first.NextNode = second;
-            second.PrevNode = first;
 
-            var therd = new Node { Value = 3 };*/
+            linkedList.AddNode(1);
+            linkedList.AddNode(2);
+            linkedList.AddNode(3);
+            linkedList.AddNode(4);
+            linkedList.AddNode(5);
 
-            int[] array = { 1, 2, 3, 4, 5 };
+            Console.WriteLine(linkedList.GetCount());
 
+            Console.WriteLine(linkedList.FindNode(3).Value);
+
+            linkedList.RemoveNode(3);
+           
+            linkedList.AddNodeAfter(linkedList.firstNode, 5);
 
         }
 
@@ -63,67 +69,109 @@ namespace asdLesson2._1
             Node FindNode(int searchValue); // ищет элемент по его значению
         }
 
-
-
-         public class LinkedClass : ILinkedList
-         {
+        public class LinkedClass : ILinkedList
+        {
             public Node firstNode { get; set; }
             public Node lastNode { get; set; }
 
+            public Node currentNode { get; set; }
+
             public void AddNode(int value) // добавляет новый элемент списка
              {
-                 while(Node.NextNode!=null)
-                 {
-                     node = node.NextNode;
-                 }
+                var node = new Node { Value = value };
 
-                 var newNode = new Node { Value = value };
-                 node.NextNode = newNode;
-             }
-
+                if (firstNode == null)
+                {
+                    firstNode = node;
+                }
+                else
+                {
+                    lastNode.NextNode = node;
+                    node.PrevNode = lastNode;
+                }
+                lastNode = node;
+            }
+           
             public void AddNodeAfter(Node node, int value) // добавляет новый элемент списка после определённого элемента
              {
-                 /*var newNode = new Node { Value = value };
-                 var nextItem = node.NextItem;
-                 node.NextItem = newNode;
-                 newNode.NextNode = nextItem;*/
+                //int j=FindNode();
+                var newNode = new Node { Value = value }; // новая нода
+                Node currentNode = node; //текущая нода после которой вставляем новый элемент value
+                
+                newNode.PrevNode = currentNode; //в новой ноде назначаем предыдущую текущую
 
+                if (currentNode.NextNode==null)
+                {
+                    newNode.NextNode = null;
+                }
+                else
+                {
+                    var nextNode = currentNode.NextNode; //следующая нода для текущей
+                                    newNode.NextNode = nextNode; //для новой назначаем
+                    nextNode.PrevNode = newNode; //для следующей записываем новую 
+                }
+                
              }
 
              public Node FindNode(int searchValue) // ищет элемент по его значению
              {
-                /* var currentNode=new */
+                while (firstNode.Value!=searchValue)
+                {
+                    firstNode = firstNode.NextNode;
+                    
+                }
+                return firstNode;
              }
 
              public int GetCount() // возвращает количество элементов в списке
              {
-               /*  int i = 0;
-                 while(Node.=null)
-                 {
-                     i++;
-                 }
-                 return i;*/
+                int i = 1;
+                if (firstNode.NextNode == null)
+                {
+                    return i;
+                }
+                else do
+                    {
+                        i++;
+                        firstNode = firstNode.NextNode;
+                    } while (firstNode.NextNode != null);
 
-             }
+                return i;
+            }
 
-             public void RemoveNode(int index) // удаляет элемент по порядковому номеру
+            public void RemoveNode(int index) // удаляет элемент по порядковому номеру
              {
+                var removeNode = new Node { Value = index };
 
-                FirstNode. = null;
-                public Node LastNode { get; set; } = null;
-             }
+                var findNode = firstNode;
+
+                while (removeNode.Value != findNode.Value)
+                {
+                    findNode = findNode.NextNode;
+
+                }
+                var next = findNode.NextNode;
+                var prev = findNode.PrevNode;
+                prev.NextNode = next;
+                next.PrevNode = prev;
+
+            }
 
              public void RemoveNode(Node node) // ищет элемент по его значению
-             {/*
-                 var currentNode = node;
+             {
+                var removeNode = node;
+                var findNode = firstNode;
 
-                 while(currentNode!=null)
-                     {
-                     if (currentNode =) 
-                     { 
-                     }*/
+                while (findNode != removeNode)
+                {
+                    findNode = findNode.NextNode;
+                }
+                var next = findNode.NextNode;
+                var prev = findNode.PrevNode;
+                prev.NextNode = next;
+                next.PrevNode = prev;
 
-             }
+            } 
          }
 
     }
